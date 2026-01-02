@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalio Creative Hub | Creative Agency</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {box-sizing:border-box;}
+html {scroll-behavior:smooth;}
+body {
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#fafafa;
+  color:#333;
+}
+
+/* NAVBAR */
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#fff;
+  box-shadow:0 2px 15px rgba(0,0,0,.1);
+  z-index:1000;
+  transition:0.3s;
+}
+nav.scrolled {background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.2);}
+nav ul {
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  padding:15px;
+  margin:0;
+}
+nav ul li {margin:0 20px;}
+nav ul li a {
+  text-decoration:none;
+  color:#b37676;
+  font-weight:600;
+  transition:0.3s;
+}
+nav ul li a:hover {color:#76b39d;}
+
+/* HERO */
+.hero {
+  height:100vh;
+  background:url("https://images.unsplash.com/photo-1498050108023-c5249f4df085") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after {
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,.6);
+}
+.hero-content {
+  position:relative;
+  z-index:2;
+  animation:fadeUp 1.2s ease forwards;
+  opacity:0;
+}
+.hero h1 {font-size:52px; margin-bottom:10px;}
+.hero p {font-size:22px; margin:15px 0;}
+.hero a {
+  background:#b37676;
+  color:#fff;
+  padding:14px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+.hero a:hover {background:#76b39d; transform:scale(1.05);}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  0% {opacity:0; transform:translateY(30px);}
+  100% {opacity:1; transform:translateY(0);}
+}
+.fade-in {
+  opacity:0;
+  transform:translateY(20px);
+  transition:all 0.8s ease;
+}
+.fade-in.visible {opacity:1; transform:translateY(0);}
+
+/* SECTIONS */
+section {padding:80px 20px;}
+.container {max-width:1100px;margin:auto;}
+h2 {text-align:center;color:#b37676;margin-bottom:40px; font-size:36px;}
+
+/* ABOUT */
+.about p {text-align:center; max-width:850px; margin:auto; line-height:1.8; font-size:18px;}
+.approach {
+  margin:40px auto;
+  max-width:700px;
+  background:#f7f2f2;
+  padding:30px;
+  border-radius:14px;
+  transition:0.3s;
+}
+.approach:hover {box-shadow:0 8px 25px rgba(0,0,0,.15);}
+.approach ul {list-style:none;padding:0; margin-top:15px;}
+.approach li::before {content:"✓ "; color:#b37676; font-weight:bold;}
+
+/* SERVICES */
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+.card {
+  background:#fff;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 6px 20px rgba(0,0,0,.1);
+  transition:.4s;
+  text-align:center;
+  cursor:pointer;
+}
+.card:hover {
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+.card i {font-size:50px; color:#76b39d; margin-bottom:15px; transition:0.3s;}
+.card:hover i {color:#b37676;}
+
+/* PORTFOLIO */
+.portfolio {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.portfolio img {
+  width:100%;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,.15);
+  transition:0.4s;
+}
+.portfolio img:hover {transform:scale(1.05); filter:brightness(0.9); cursor:pointer;}
+
+/* TESTIMONIALS */
+.testimonial {
+  background:#fff;
+  padding:30px;
+  border-radius:15px;
+  margin-bottom:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,.1);
+  font-style:italic;
+  transition:0.3s;
+}
+.testimonial:hover {transform:scale(1.02);}
+
+/* CONTACT */
+form {max-width:600px;margin:auto;}
+input,textarea {
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  transition:0.3s;
+}
+input:focus, textarea:focus {border-color:#76b39d; outline:none;}
+
+/* MESSAGES */
+form {max-width:600px;margin:auto;}
+input,textarea {
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  transition:0.3s;
+}
+input:focus, textarea:focus {border-color:#76b39d; outline:none;}
+button {
+  background:#b37676;
+  color:#fff;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover {background:#76b39d; transform:scale(1.05);}
+
+/* MAP */
+iframe {
+  width:100%;
+  height:300px;
+  border:0;
+  border-radius:15px;
+  margin-top:30px;
+}
+
+/* FOOTER */
+footer {
+  background:#76b39d;
+  color:#fff;
+  text-align:center;
+  padding:30px;
+}
+.socials a {
+  color:#fff;
+  margin:0 10px;
+  font-size:24px;
+  transition:0.3s;
+}
+.socials a:hover {color:#b37676;}
+
+/* WHATSAPP */
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:15px;
+  border-radius:50%;
+  font-size:28px;
+  box-shadow:0 4px 10px rgba(0,0,0,.3);
+  transition:0.3s;
+}
+.whatsapp:hover {transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#portfolio">Portfolio</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#contact">Mesaages</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>KALIO CREATIVE HUB</h1>
+<p>Design • Branding • Digital Marketing</p>
+<a href="#contact">Work With Us</a>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container about fade-in">
+<h2>About Us</h2>
+<p>
+At <strong>Kalio Creative Hub</strong>, we’re a cutting-edge design agency dedicated to bringing
+innovative ideas to life. Established on <strong>June 15, 2022</strong>, our team delivers bespoke
+design solutions that exceed expectations.
+</p>
+
+<div class="approach">
+<h3>Our Approach</h3>
+<ul>
+<li>Collaborative and client-centric</li>
+<li>Innovative creative problem-solving</li>
+<li>Attention to detail and quality</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container fade-in">
+<h2>Our Services</h2>
+<div class="services-grid">
+<div class="card"><i class="fa fa-paint-brush"></i><h3>Creative Design</h3></div>
+<div class="card"><i class="fa fa-bullhorn"></i><h3>Social Media Marketing</h3></div>
+<div class="card"><i class="fa fa-chart-line"></i><h3>Facebook Boosting</h3></div>
+</div>
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+<div class="container fade-in">
+<h2>Our Work</h2>
+<div class="portfolio">
+<img src="https://via.placeholder.com/400" alt="Portfolio 1">
+<img src="https://via.placeholder.com/400" alt="Portfolio 2">
+<img src="https://via.placeholder.com/400" alt="Portfolio 3">
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+<div class="container fade-in">
+<h2>Client Reviews</h2>
+<div class="testimonial">"Professional and creative team!" – Linda</div>
+<div class="testimonial">"Excellent marketing results!" – Grace</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container fade-in">
+<h2>Contact Us</h2>
+<form onsubmit="event.preventDefault();alert('Message sent!')">
+<input placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button>Send Message</button>
+</form>
+
+<iframe src="https://maps.google.com/maps?q=Lusaka&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+</div>
+</section>
+
+<footer>
+<p>📞 0960497922 / 0975674316</p>
+<p>📧 kaliocreativehub@gmail.com</p>
+<div class="socials">
+<a href=""><i class="fab fa-facebook"></i></a>
+<a href="https://www.youtube.com/@frazerkalio9538"><i class="fab fa-youtube"></i></a>
+<a href="https://pin.it/7GBrBA2XT"><i class="fab fa-pinterest"></i></a>
+<a href="http://whatsapp.com/channel/0029VbA0x9y8vd1RvUnmsM1Q"><i class="fab fa-whatsapp"></i></a>
+</div>
+<p>© 2025 Kalio Creative Hub</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/260960497922" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+// Scroll fade-in effect
+const faders = document.querySelectorAll('.fade-in');
+const options = {threshold:0.2};
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    appearOnScroll.unobserve(entry.target);
+  });
+}, options);
+faders.forEach(fader => appearOnScroll.observe(fader));
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+
+</body>
+</html>

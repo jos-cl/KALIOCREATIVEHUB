@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Messages | Kalio Creative Hub</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f9f5f0 0%, #f0f4f8 100%);
+      color: #333;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(179, 118, 118, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(118, 179, 157, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    /* HEADER */
+    .main-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo-text h1 {
+      font-size: 24px;
+      color: #b37676;
+      margin: 0;
+    }
+
+    .logo-text p {
+      font-size: 12px;
+      color: #666;
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: #b37676;
+      background: rgba(179, 118, 118, 0.1);
+    }
+
+    .nav-links a.active {
+      color: #b37676;
+      background: rgba(179, 118, 118, 0.1);
+      font-weight: 600;
+    }
+
+    .back-home {
+      text-decoration: none;
+      color: #76b39d;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: rgba(118, 179, 157, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .back-home:hover {
+      background: rgba(118, 179, 157, 0.2);
+      transform: translateX(-5px);
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      max-width: 1200px;
+      margin: 120px auto 50px;
+      padding: 0 20px;
+    }
+
+    /* WELCOME SECTION */
+    .welcome-section {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #b37676, #76b39d);
+    }
+
+    .welcome-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 36px;
+    }
+
+    .welcome-section h1 {
+      font-size: 42px;
+      color: #b37676;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .welcome-section p {
+      font-size: 18px;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* CONTACT OPTIONS */
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #b37676, #76b39d);
+    }
+
+    .contact-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 30px;
+    }
+
+    .contact-card h3 {
+      color: #b37676;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .contact-card p {
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .contact-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(179, 118, 118, 0.2);
+    }
+
+    /* MESSAGE FORM CONTAINER */
+    .form-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #b37676, #76b39d);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-header h2 {
+      font-size: 32px;
+      color: #b37676;
+      margin-bottom: 10px;
+    }
+
+    .form-header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    /* MESSAGE OPTIONS */
+    .message-options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .option-btn {
+      flex: 1;
+      min-width: 250px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(179, 118, 118, 0.2);
+      padding: 25px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .option-btn:hover {
+      transform: translateY(-5px);
+      border-color: #b37676;
+      box-shadow: 0 10px 30px rgba(179, 118, 118, 0.1);
+    }
+
+    .option-btn.active {
+      background: linear-gradient(135deg, rgba(179, 118, 118, 0.1), rgba(118, 179, 157, 0.1));
+      border-color: #b37676;
+    }
+
+    .option-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+    }
+
+    .option-btn h3 {
+      color: #b37676;
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .option-btn p {
+      color: #666;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* FORM SECTIONS */
+    .form-section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FORM STYLES */
+    form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .form-group label.required::after {
+      content: ' *';
+      color: #e74c3c;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e1e8ed;
+      border-radius: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #b37676;
+      box-shadow: 0 0 0 3px rgba(179, 118, 118, 0.1);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23b37676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+      background-size: 20px;
+      padding-right: 50px;
+    }
+
+    /* FILE UPLOAD */
+    .file-upload-container {
+      margin: 30px 0;
+    }
+
+    .file-upload-label {
+      display: block;
+      background: rgba(247, 242, 242, 0.5);
+      border: 3px dashed rgba(179, 118, 118, 0.3);
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #666;
+    }
+
+    .file-upload-label:hover {
+      background: rgba(247, 242, 242, 0.8);
+      border-color: #b37676;
+    }
+
+    .file-upload-label i {
+      font-size: 48px;
+      margin-bottom: 15px;
+      color: #b37676;
+    }
+
+    .file-upload-input {
+      display: none;
+    }
+
+    .file-preview {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .file-preview-item {
+      background: linear-gradient(135deg, #f7f2f2, #e8f4f1);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .file-preview-item i {
+      color: #b37676;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .file-preview-item i:hover {
+      color: #e74c3c;
+    }
+
+    /* SERVICE-SPECIFIC FIELDS */
+    .service-specific-fields {
+      background: linear-gradient(135deg, rgba(247, 242, 242, 0.5), rgba(232, 244, 241, 0.5));
+      padding: 30px;
+      border-radius: 20px;
+      margin: 30px 0;
+      border: 1px solid rgba(179, 118, 118, 0.1);
+    }
+
+    .service-specific-fields h4 {
+      color: #b37676;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 8px 15px;
+      background: white;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .checkbox-group label:hover {
+      background: rgba(179, 118, 118, 0.1);
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
+
+    /* SUBMIT BUTTON */
+    .submit-section {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid rgba(179, 118, 118, 0.1);
+    }
+
+    .submit-btn {
+      padding: 18px 50px;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(179, 118, 118, 0.2);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(179, 118, 118, 0.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-message {
+      background: linear-gradient(135deg, #d4edda, #c3e6cb);
+      color: #155724;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 40px 0;
+      display: none;
+      animation: fadeIn 0.5s ease;
+      border-left: 5px solid #28a745;
+    }
+
+    .success-message.active {
+      display: block;
+    }
+
+    .success-message i {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: #28a745;
+    }
+
+    .success-message h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #155724;
+    }
+
+    .success-message p {
+      font-size: 16px;
+      color: #0c4128;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CONTACT INFO */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+      padding-top: 60px;
+      border-top: 2px solid rgba(179, 118, 118, 0.1);
+    }
+
+    .info-card {
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .info-card h3 {
+      color: #b37676;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .info-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .info-card a {
+      color: #76b39d;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .info-card a:hover {
+      color: #b37676;
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .main-footer {
+      background: linear-gradient(135deg, #76b39d, #5a9c87);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo .logo-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+
+    .footer-logo h2 {
+      font-size: 24px;
+      color: white;
+      margin: 0;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .social-links a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .main-content {
+        margin-top: 180px;
+      }
+
+      .welcome-section h1 {
+        font-size: 32px;
+      }
+
+      .welcome-section p {
+        font-size: 16px;
+      }
+
+      .option-btn {
+        min-width: 100%;
+      }
+
+      .form-container {
+        padding: 30px 20px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .contact-options {
+        grid-template-columns: 1fr;
+      }
+
+      .message-options {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <div class="logo-text">
+          <h1>KALIO CREATIVE HUB</h1>
+          <p>Design • Branding • Digital Marketing</p>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="#" class="active">Contact</a></li>
+          <li><a href="/Admin Dashboard/AdminScreen.html">Admin</a></li>
+        </ul>
+      </nav>
+
+      <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <!-- WELCOME SECTION -->
+    <section class="welcome-section">
+      <div class="welcome-icon">
+        <i class="fas fa-comments"></i>
+      </div>
+      <h1>Let's Create Something Amazing Together</h1>
+      <p>Ready to bring your creative vision to life? Whether you have questions about our services or want to start a new project, we're here to help. Choose how you'd like to connect with us below.</p>
+    </section>
+
+    <!-- CONTACT OPTIONS -->
+    <section class="contact-options">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Send a Message</h3>
+        <p>Have questions or want to discuss your project? Send us a message and we'll get back to you within 24 hours.</p>
+        <button class="contact-btn" onclick="scrollToForm()">
+          Send Message
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <h3>Call Us</h3>
+        <p>Prefer to talk? Give us a call during business hours for immediate assistance with your creative needs.</p>
+        <a href="tel:260960497922" class="contact-btn">
+          Call Now
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <h3>WhatsApp</h3>
+        <p>Chat with us on WhatsApp for quick responses and easy file sharing. Perfect for project discussions.</p>
+        <a href="https://wa.me/260960497922" target="_blank" class="contact-btn">
+          Chat on WhatsApp
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- MESSAGE FORM -->
+    <section class="form-container" id="messageForm">
+      <div class="form-header">
+        <h2>Send Your Message</h2>
+        <p>Choose how you'd like to connect with Kalio Creative Hub</p>
+      </div>
+
+      <!-- SUCCESS MESSAGE -->
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <h3>Message Sent Successfully!</h3>
+        <p>Thank you for contacting Kalio Creative Hub. We've received your message and our team will review it shortly. We'll get back to you within 24 hours with a response.</p>
+        <p style="margin-top: 20px;"><strong>What happens next?</strong></p>
+        <p>1. Our team reviews your request<br>
+           2. We'll contact you for any clarifications<br>
+           3. You'll receive a detailed proposal<br>
+           4. We begin the creative process!</p>
+      </div>
+
+      <!-- MESSAGE OPTIONS -->
+      <div class="message-options">
+        <div class="option-btn active" id="inquiryBtn" onclick="showForm('inquiry')">
+          <div class="option-icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <div>
+            <h3>Make an Inquiry</h3>
+            <p>General questions & information requests</p>
+          </div>
+        </div>
+
+        <div class="option-btn" id="serviceBtn" onclick="showForm('service')">
+          <div class="option-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div>
+            <h3>Initiate a Service</h3>
+            <p>Start a new creative project with us</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- INQUIRY FORM -->
+      <div class="form-section active" id="inquiryForm">
+        <form id="inquiryFormElement" onsubmit="submitInquiry(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="inquiryName" class="required">Your Full Name</label>
+              <input type="text" id="inquiryName" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="inquiryEmail" class="required">Email Address</label>
+              <input type="email" id="inquiryEmail" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="inquiryPhone">Phone Number (Optional)</label>
+              <input type="tel" id="inquiryPhone" placeholder="+260 XXX XXX XXX">
+            </div>
+            <div class="form-group">
+              <label for="inquirySubject">Subject</label>
+              <input type="text" id="inquirySubject" placeholder="What is this about?">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inquiryMessage" class="required">Your Message</label>
+            <textarea id="inquiryMessage" rows="6" placeholder="Write your message here... Tell us what you'd like to know about our services, pricing, availability, or anything else you'd like to discuss. We're excited to hear from you!" required></textarea>
+          </div>
+
+          <div class="submit-section">
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Send Inquiry
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- SERVICE REQUEST FORM -->
+      <div class="form-section" id="serviceForm">
+        <form id="serviceFormElement" onsubmit="submitServiceRequest(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="serviceName" class="required">Your Full Name</label>
+              <input type="text" id="serviceName" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="serviceEmail" class="required">Email Address</label>
+              <input type="email" id="serviceEmail" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="servicePhone" class="required">Phone Number</label>
+              <input type="tel" id="servicePhone" placeholder="+260 XXX XXX XXX" required>
+            </div>
+            <div class="form-group">
+              <label for="serviceCompany">Company/Organization</label>
+              <input type="text" id="serviceCompany" placeholder="Your company name (if applicable)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="serviceType" class="required">Select Service</label>
+            <select id="serviceType" required onchange="showServiceSpecificFields()">
+              <option value="">Choose a service...</option>
+              <option value="creative_design">🎨 Creative Design</option>
+              <option value="social_media">📱 Social Media Marketing</option>
+              <option value="facebook_boosting">📈 Facebook Boosting</option>
+              <option value="branding">🏷️ Branding Package</option>
+              <option value="web_design">🌐 Web Design</option>
+              <option value="other">✨ Other Service</option>
+            </select>
+          </div>
+
+          <!-- SERVICE-SPECIFIC FIELDS -->
+          <div class="service-specific-fields" id="serviceSpecificFields">
+            <p style="text-align: center; color: #888; font-style: italic;">Select a service above to see specific requirements</p>
+          </div>
+
+          <div class="form-group">
+            <label for="projectDescription" class="required">Project Description</label>
+            <textarea id="projectDescription" rows="5" placeholder="Describe your project in detail... What are your goals? Who is your target audience? What style or aesthetic do you prefer? Any specific requirements or inspirations?" required></textarea>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="timeline" class="required">Preferred Timeline</label>
+              <select id="timeline" required>
+                <option value="">Select timeline...</option>
+                <option value="urgent">⚡ Urgent (Within 1 week)</option>
+                <option value="normal">📅 Normal (2-3 weeks)</option>
+                <option value="flexible">🌱 Flexible (1 month or more)</option>
+                <option value="discuss">💬 Let's discuss</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget" class="required">Budget Range</label>
+              <select id="budget" required>
+                <option value="">Select budget...</option>
+                <option value="low">💵 Low (Under $100)</option>
+                <option value="medium">💰 Medium ($100 - $500)</option>
+                <option value="high">💎 High ($500 - $2000)</option>
+                <option value="enterprise">🏢 Enterprise ($2000+)</option>
+                <option value="discuss">💬 Need quotation</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- FILE UPLOAD -->
+          <div class="file-upload-container">
+            <label class="file-upload-label" for="fileUpload">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <h3>Upload Reference Files</h3>
+              <p>Drag & drop files or click to browse</p>
+              <p><small>Supported: Images (JPG, PNG, SVG), Documents (PDF, DOC), Presentations (PPT)</small></p>
+              <p><small>Maximum file size: 10MB per file</small></p>
+            </label>
+            <input type="file" id="fileUpload" class="file-upload-input" multiple onchange="handleFileUpload(event)">
+            <div class="file-preview" id="filePreview"></div>
+          </div>
+
+          <div class="submit-section">
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Submit Service Request
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACT INFORMATION -->
+    <section class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3>Location</h3>
+        <p>Based in Lusaka, Zambia<br>Serving clients worldwide</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Business Hours</h3>
+        <p>Monday - Friday: 8AM - 6PM<br>Saturday: 9AM - 1PM<br>Sunday: Closed</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <h3>Email Us</h3>
+        <p><a href="mailto:kaliocreativehub@gmail.com">kaliocreativehub@gmail.com</a><br>Response time: Within 24 hours</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h3>Call Us</h3>
+        <p><a href="tel:260960497922">0960 497 922</a><br><a href="tel:260975674316">0975 674 316</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h2>KALIO CREATIVE HUB</h2>
+      </div>
+
+      <div class="social-links">
+        <a href="#" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/@frazerkalio9538" target="_blank" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://pin.it/7GBrBA2XT" target="_blank" title="Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+        <a href="http://whatsapp.com/channel/0029VbA0x9y8vd1RvUnmsM1Q" target="_blank" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:kaliocreativehub@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+      <p class="copyright">
+        © 2025 Kalio Creative Hub. All rights reserved.<br>
+        Design • Branding • Digital Marketing | Lusaka, Zambia
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Contact Form Functions
+    let uploadedFiles = [];
+
+    function scrollToForm() {
+      document.getElementById('messageForm').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    function showForm(formType) {
+      // Update button states
+      document.getElementById('inquiryBtn').classList.toggle('active', formType === 'inquiry');
+      document.getElementById('serviceBtn').classList.toggle('active', formType === 'service');
+      
+      // Show/hide forms
+      document.getElementById('inquiryForm').classList.toggle('active', formType === 'inquiry');
+      document.getElementById('serviceForm').classList.toggle('active', formType === 'service');
+      
+      // Reset success message
+      document.getElementById('successMessage').classList.remove('active');
+      
+      // Smooth scroll to form
+      setTimeout(() => {
+        document.getElementById('messageForm').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 300);
+    }
+
+    function showServiceSpecificFields() {
+      const serviceType = document.getElementById('serviceType').value;
+      const fieldsContainer = document.getElementById('serviceSpecificFields');
+      
+      let html = '';
+      
+      switch(serviceType) {
+        case 'creative_design':
+          html = `
+            <h4>🎨 Creative Design Requirements</h4>
+            <div class="field-group">
+              <label>Design Type:</label>
+              <select>
+                <option value="">Select design type...</option>
+                <option value="logo">Logo Design</option>
+                <option value="flyer">Flyer/Brochure</option>
+                <option value="business_card">Business Cards</option>
+                <option value="poster">Poster Design</option>
+                <option value="social_media">Social Media Graphics</option>
+                <option value="packaging">Packaging Design</option>
+                <option value="other">Other Design</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Dimensions/Sizes Required:</label>
+              <input type="text" placeholder="e.g., A4, 1080x1080px, Business Card size, etc.">
+            </div>
+            <div class="field-group">
+              <label>Color Preferences:</label>
+              <input type="text" placeholder="e.g., Blue and white, company colors, bright colors, etc.">
+            </div>
+            <div class="field-group">
+              <label>Do you have existing brand guidelines?</label>
+              <select>
+                <option value="no" selected>No, need new guidelines</option>
+                <option value="yes_limited">Yes, but limited</option>
+                <option value="yes_complete">Yes, complete brand book</option>
+              </select>
+            </div>
+          `;
+          break;
+          
+        case 'social_media':
+          html = `
+            <h4>📱 Social Media Marketing Requirements</h4>
+            <div class="field-group">
+              <label>Platforms Needed:</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" value="facebook"> Facebook</label>
+                <label><input type="checkbox" value="instagram"> Instagram</label>
+                <label><input type="checkbox" value="twitter"> Twitter/X</label>
+                <label><input type="checkbox" value="linkedin"> LinkedIn</label>
+                <label><input type="checkbox" value="tiktok"> TikTok</label>
+                <label><input type="checkbox" value="pinterest"> Pinterest</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Content Creation Frequency:</label>
+              <select>
+                <option value="">Select frequency...</option>
+                <option value="daily">Daily Posts</option>
+                <option value="weekly">3-5 Posts per week</option>
+                <option value="biweekly">2-3 Posts per week</option>
+                <option value="monthly">Monthly Strategy</option>
+                <option value="campaign">Specific Campaign</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Current Follower Count:</label>
+              <input type="text" placeholder="e.g., 500, 1000, 5000, etc.">
+            </div>
+            <div class="field-group">
+              <label>Primary Goal:</label>
+              <select>
+                <option value="awareness">Brand Awareness</option>
+                <option value="engagement">Increase Engagement</option>
+                <option value="sales">Generate Sales/Leads</option>
+                <option value="followers">Gain Followers</option>
+                <option value="community">Build Community</option>
+              </select>
+            </div>
+          `;
+          break;
+          
+        case 'facebook_boosting':
+          html = `
+            <h4>📈 Facebook Boosting Requirements</h4>
+            <div class="field-group">
+              <label>Type of Content to Boost:</label>
+              <select>
+                <option value="">Select content type...</option>
+                <option value="post">Existing Post</option>
+                <option value="ad">New Ad Campaign</option>
+                <option value="event">Event Promotion</option>
+                <option value="page">Page Likes Campaign</option>
+                <option value="video">Video Promotion</option>
+                <option value="lead">Lead Generation</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Target Audience Description:</label>
+              <textarea rows="3" placeholder="Describe your target audience (age, location, interests, behaviors, etc.)"></textarea>
+            </div>
+            <div class="field-group">
+              <label>Estimated Budget:</label>
+              <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
+                <input type="number" placeholder="Amount" style="margin-bottom: 0;">
+                <select style="margin-bottom: 0;">
+                  <option value="usd">USD</option>
+                  <option value="zmw">ZMW</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Campaign Duration:</label>
+              <select>
+                <option value="1week">1 Week</option>
+                <option value="2weeks">2 Weeks</option>
+                <option value="1month">1 Month</option>
+                <option value="custom">Custom Duration</option>
+              </select>
+            </div>
+          `;
+          break;
+          
+        case 'branding':
+          html = `
+            <h4>🏷️ Branding Package Requirements</h4>
+            <div class="field-group">
+              <label>Branding Elements Needed:</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" value="logo"> Logo Design</label>
+                <label><input type="checkbox" value="color_palette"> Color Palette</label>
+                <label><input type="checkbox" value="typography"> Typography</label>
+                <label><input type="checkbox" value="business_cards"> Business Cards</label>
+                <label><input type="checkbox" value="letterhead"> Letterhead</label>
+                <label><input type="checkbox" value="brand_guidelines"> Brand Guidelines</label>
+                <label><input type="checkbox" value="social_media_kit"> Social Media Kit</label>
+                <label><input type="checkbox" value="email_signature"> Email Signature</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Company Industry:</label>
+              <input type="text" placeholder="e.g., Technology, Fashion, Food & Beverage, Healthcare, etc.">
+            </div>
+            <div class="field-group">
+              <label>Brand Personality:</label>
+              <select>
+                <option value="">Select brand personality...</option>
+                <option value="modern">Modern & Clean</option>
+                <option value="traditional">Traditional & Trustworthy</option>
+                <option value="fun">Fun & Playful</option>
+                <option value="luxury">Luxury & Premium</option>
+                <option value="minimalist">Minimalist</option>
+                <option value="bold">Bold & Dynamic</option>
+                <option value="eco">Eco-friendly & Natural</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Competitors (for research):</label>
+              <textarea rows="2" placeholder="List 2-3 main competitors or brands you admire"></textarea>
+            </div>
+          `;
+          break;
+          
+        case 'web_design':
+          html = `
+            <h4>🌐 Web Design Requirements</h4>
+            <div class="field-group">
+              <label>Website Type:</label>
+              <select>
+                <option value="">Select website type...</option>
+                <option value="business">Business Website</option>
+                <option value="ecommerce">E-commerce Store</option>
+                <option value="portfolio">Portfolio Website</option>
+                <option value="blog">Blog/News Site</option>
+                <option value="landing">Landing Page</option>
+                <option value="custom">Custom Web Application</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Number of Pages:</label>
+              <select>
+                <option value="1-5">1-5 Pages</option>
+                <option value="6-10">6-10 Pages</option>
+                <option value="11-20">11-20 Pages</option>
+                <option value="20+">20+ Pages</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Special Features Needed:</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" value="responsive"> Responsive Design</label>
+                <label><input type="checkbox" value="cms"> Content Management</label>
+                <label><input type="checkbox" value="ecommerce"> E-commerce</label>
+                <label><input type="checkbox" value="blog"> Blog System</label>
+                <label><input type="checkbox" value="contact_form"> Contact Forms</label>
+                <label><input type="checkbox" value="seo"> SEO Optimization</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Preferred Platform:</label>
+              <select>
+                <option value="">Select platform...</option>
+                <option value="wordpress">WordPress</option>
+                <option value="custom">Custom Code</option>
+                <option value="shopify">Shopify</option>
+                <option value="wix">Wix</option>
+                <option value="not_sure">Not sure - need advice</option>
+              </select>
+            </div>
+          `;
+          break;
+          
+        default:
+          html = `<p style="text-align: center; color: #888; font-style: italic;">Select a service above to see specific requirements</p>`;
+      }
+      
+      fieldsContainer.innerHTML = html;
+    }
+
+    function handleFileUpload(event) {
+      const files = Array.from(event.target.files);
+      const previewContainer = document.getElementById('filePreview');
+      
+      files.forEach(file => {
+        if (file.size > 10 * 1024 * 1024) { // 10MB limit
+          alert(`File "${file.name}" is too large. Maximum file size is 10MB.`);
+          return;
+        }
+        
+        uploadedFiles.push(file);
+        
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-preview-item';
+        fileItem.innerHTML = `
+          <i class="fas fa-file"></i>
+          <span>${file.name} (${(file.size / 1024).toFixed(1)}KB)</span>
+          <i class="fas fa-times" onclick="removeFile('${file.name}')" style="margin-left: auto;"></i>
+        `;
+        previewContainer.appendChild(fileItem);
+      });
+      
+      // Reset file input
+      event.target.value = '';
+    }
+
+    function removeFile(fileName) {
+      uploadedFiles = uploadedFiles.filter(file => file.name !== fileName);
+      updateFilePreview();
+    }
+
+    function updateFilePreview() {
+      const previewContainer = document.getElementById('filePreview');
+      previewContainer.innerHTML = '';
+      
+      uploadedFiles.forEach(file => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-preview-item';
+        fileItem.innerHTML = `
+          <i class="fas fa-file"></i>
+          <span>${file.name} (${(file.size / 1024).toFixed(1)}KB)</span>
+          <i class="fas fa-times" onclick="removeFile('${file.name}')" style="margin-left: auto;"></i>
+        `;
+        previewContainer.appendChild(fileItem);
+      });
+    }
+
+    function submitInquiry(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('inquiryName').value;
+      const email = document.getElementById('inquiryEmail').value;
+      const phone = document.getElementById('inquiryPhone').value;
+      const subject = document.getElementById('inquirySubject').value;
+      const message = document.getElementById('inquiryMessage').value;
+      
+      // Simulate sending email (in real implementation, use backend API)
+      const inquiryData = {
+        type: 'inquiry',
+        name,
+        email,
+        phone,
+        subject,
+        message,
+        timestamp: new Date().toISOString()
+      };
+      
+      console.log('Inquiry submitted:', inquiryData);
+      
+      // Show success message
+      const successMessage = document.getElementById('successMessage');
+      successMessage.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <h3>Inquiry Sent Successfully!</h3>
+        <p>Thank you for contacting Kalio Creative Hub, ${name}! We've received your inquiry and will respond to you at ${email} within 24 hours.</p>
+        <p style="margin-top: 20px;"><strong>We'll discuss:</strong></p>
+        <p>• ${subject || 'Your inquiry'}<br>
+           • Answer all your questions<br>
+           • Provide detailed information<br>
+           • Help you plan your next steps</p>
+      `;
+      successMessage.classList.add('active');
+      
+      // Scroll to success message
+      successMessage.scrollIntoView({ behavior: 'smooth' });
+      
+      // Reset form
+      event.target.reset();
+      
+      return false;
+    }
+
+    function submitServiceRequest(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('serviceName').value;
+      const email = document.getElementById('serviceEmail').value;
+      const phone = document.getElementById('servicePhone').value;
+      const company = document.getElementById('serviceCompany').value;
+      const serviceType = document.getElementById('serviceType').value;
+      const description = document.getElementById('projectDescription').value;
+      const timeline = document.getElementById('timeline').value;
+      const budget = document.getElementById('budget').value;
+      
+      // Get service-specific fields
+      const serviceSpecificData = {};
+      const specificFields = document.querySelectorAll('#serviceSpecificFields input, #serviceSpecificFields select, #serviceSpecificFields textarea');
+      specificFields.forEach(field => {
+        if (field.name || field.id) {
+          serviceSpecificData[field.name || field.id] = field.value;
+        }
+      });
+      
+      // Prepare data for sending
+      const serviceRequest = {
+        type: 'service_request',
+        name,
+        email,
+        phone,
+        company,
+        serviceType,
+        description,
+        timeline,
+        budget,
+        serviceSpecificData,
+        filesCount: uploadedFiles.length,
+        timestamp: new Date().toISOString()
+      };
+      
+      console.log('Service request submitted:', serviceRequest);
+      
+      // Show success message
+      const successMessage = document.getElementById('successMessage');
+      const serviceNames = {
+        'creative_design': 'Creative Design',
+        'social_media': 'Social Media Marketing',
+        'facebook_boosting': 'Facebook Boosting',
+        'branding': 'Branding Package',
+        'web_design': 'Web Design',
+        'other': 'Custom Service'
+      };
+      
+      successMessage.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <h3>Service Request Submitted!</h3>
+        <p>Excellent! Your ${serviceNames[serviceType] || 'service'} request has been sent to Kalio Creative Hub.</p>
+        <p><strong>What happens next?</strong></p>
+        <p>1. Our team reviews your ${serviceNames[serviceType] || 'service'} requirements<br>
+           2. We'll contact you at ${phone} or ${email} within 24 hours<br>
+           3. We'll prepare a detailed proposal and quote<br>
+           4. Once approved, we begin the creative process!</p>
+        <p style="margin-top: 20px;"><em>We're excited to work with ${company ? company + ' and' : ''} you!</em></p>
+      `;
+      successMessage.classList.add('active');
+      
+      // Scroll to success message
+      successMessage.scrollIntoView({ behavior: 'smooth' });
+      
+      // Reset form and files
+      event.target.reset();
+      uploadedFiles = [];
+      updateFilePreview();
+      document.getElementById('serviceSpecificFields').innerHTML = '<p style="text-align: center; color: #888; font-style: italic;">Select a service above to see specific requirements</p>';
+      
+      return false;
+    }
+
+    // Initialize form
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add drag and drop functionality for file upload
+      const fileUploadLabel = document.querySelector('.file-upload-label');
+      
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        fileUploadLabel.addEventListener(eventName, preventDefaults, false);
+      });
+      
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      ['dragenter', 'dragover'].forEach(eventName => {
+        fileUploadLabel.addEventListener(eventName, highlight, false);
+      });
+      
+      ['dragleave', 'drop'].forEach(eventName => {
+        fileUploadLabel.addEventListener(eventName, unhighlight, false);
+      });
+      
+      function highlight() {
+        fileUploadLabel.style.background = 'rgba(247, 242, 242, 0.9)';
+        fileUploadLabel.style.borderColor = '#b37676';
+      }
+      
+      function unhighlight() {
+        fileUploadLabel.style.background = 'rgba(247, 242, 242, 0.5)';
+        fileUploadLabel.style.borderColor = 'rgba(179, 118, 118, 0.3)';
+      }
+      
+      fileUploadLabel.addEventListener('drop', handleDrop, false);
+      
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        
+        const event = {
+          target: {
+            files: files
+          }
+        };
+        
+        handleFileUpload(event);
+      }
+    });
+  </script>
+</body>
+
+</html>

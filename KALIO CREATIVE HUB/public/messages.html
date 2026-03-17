@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages | Kalio Creative Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f9f5f0 0%, #f0f4f8 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .main-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #b37676, #76b39d);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo-text h1 {
+      font-size: 24px;
+      color: #b37676;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #b37676;
+      background: rgba(179, 118, 118, 0.1);
+    }
+
+    .back-home {
+      text-decoration: none;
+      color: #76b39d;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: rgba(118, 179, 157, 0.1);
+      transition: all 0.3s;
+    }
+
+    .back-home:hover {
+      background: rgba(118, 179, 157, 0.2);
+      transform: translateX(-5px);
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      max-width: 1000px;
+      margin: 120px auto 50px;
+      padding: 0 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title h1 {
+      font-size: 36px;
+      color: #b37676;
+      margin-bottom: 10px;
+    }
+
+    .page-title p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    /* MESSAGING CONTAINER */
+    .messaging-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    /* RECENT MESSAGES SECTION */
+    .messages-section {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+
+    .messages-section h2 {
+      color: #b37676;
+      margin-bottom: 20px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .message-item {
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      background: #fafafa;
+      transition: all 0.3s;
+    }
+
+    .message-item:hover {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .message-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .message-sender {
+      font-weight: 600;
+      color: #b37676;
+      font-size: 16px;
+    }
+
+    .message-time {
+      color: #999;
+      font-size: 13px;
+    }
+
+    .message-contact {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .message-text {
+      color: #555;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .no-messages {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+    }
+
+    .no-messages i {
+      font-size: 48px;
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    /* SEND MESSAGE SECTION */
+    .send-message-section {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+
+    .send-message-section h2 {
+      color: #b37676;
+      margin-bottom: 20px;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #eee;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #b37676;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(179, 118, 118, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #b37676, #a06666);
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(179, 118, 118, 0.3);
+    }
+
+    .status-message {
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .status-message.success {
+      background: rgba(118, 179, 157, 0.1);
+      color: #76b39d;
+      border: 1px solid #76b39d;
+      display: block;
+    }
+
+    .status-message.error {
+      background: rgba(220, 100, 100, 0.1);
+      color: #dc6464;
+      border: 1px solid #dc6464;
+      display: block;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+    }
+
+    .loading i {
+      font-size: 40px;
+      color: #b37676;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* FOOTER */
+    .main-footer {
+      background: linear-gradient(135deg, #76b39d, #5a9c87);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 14px;
+      }
+
+      .main-content {
+        margin-top: 150px;
+      }
+
+      .page-title h1 {
+        font-size: 28px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .messages-section,
+      .send-message-section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <div class="logo-icon">K</div>
+        <div class="logo-text">
+          <h1>Kalio Hub</h1>
+          <p>Creative Agency</p>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/messages">Messages</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+      <a href="/" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="page-title">
+      <h1><i class="fas fa-envelope"></i> Messages</h1>
+      <p>View all your messages and start a conversation with our team</p>
+    </div>
+
+    <div class="messaging-container">
+      <!-- RECENT MESSAGES -->
+      <section class="messages-section">
+        <h2><i class="fas fa-inbox"></i> Recent Messages</h2>
+        <div id="messagesContainer">
+          <div class="loading">
+            <i class="fas fa-spinner"></i>
+            <p>Loading messages...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEND NEW MESSAGE -->
+      <section class="send-message-section">
+        <h2><i class="fas fa-pen-fancy"></i> Send a Message</h2>
+        
+        <div id="statusMessage" class="status-message"></div>
+
+        <form id="messageForm" onsubmit="submitMessage(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="senderName">Your Name *</label>
+              <input type="text" id="senderName" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="senderEmail">Email Address *</label>
+              <input type="email" id="senderEmail" name="email" placeholder="your.email@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="messageText">Your Message *</label>
+            <textarea id="messageText" name="message" rows="6" placeholder="Type your message here... Tell us about your project, ask questions, or share your ideas!" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p class="copyright">© 2025 Kalio Creative Hub | All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // Load recent messages on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadRecentMessages();
+    });
+
+    // Fetch and display recent messages
+    async function loadRecentMessages() {
+      const container = document.getElementById('messagesContainer');
+      try {
+        const response = await fetch('/api/recent/messages');
+        const messages = await response.json();
+
+        if (!Array.isArray(messages) || messages.length === 0) {
+          container.innerHTML = `
+            <div class="no-messages">
+              <i class="fas fa-inbox"></i>
+              <p>No messages yet. Be the first to send one!</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = messages.map(msg => `
+          <div class="message-item">
+            <div class="message-header">
+              <span class="message-sender">${msg.fromName || 'Anonymous'}</span>
+              <span class="message-time">${msg.timeAgo || 'Just now'}</span>
+            </div>
+            ${msg.email ? `<div class="message-contact"><i class="fas fa-envelope"></i> ${msg.email}</div>` : ''}
+            <div class="message-text">${msg.preview || msg.message || 'No message content'}</div>
+          </div>
+        `).join('');
+      } catch (error) {
+        console.error('Error loading messages:', error);
+        container.innerHTML = `
+          <div class="no-messages">
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Error loading messages. Please try again later.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Submit new message
+    async function submitMessage(event) {
+      event.preventDefault();
+
+      const form = document.getElementById('messageForm');
+      const statusDiv = document.getElementById('statusMessage');
+
+      const data = {
+        name: document.getElementById('senderName').value,
+        email: document.getElementById('senderEmail').value,
+        message: document.getElementById('messageText').value,
+        created_at: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          statusDiv.className = 'status-message success';
+          statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! Our team will review it shortly.';
+          form.reset();
+          
+          // Reload messages after a short delay
+          setTimeout(() => {
+            loadRecentMessages();
+            statusDiv.style.display = 'none';
+          }, 3000);
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } catch (error) {
+        console.error('Error sending message:', error);
+        statusDiv.className = 'status-message error';
+        statusDiv.innerHTML = '<i class="fas fa-times-circle"></i> Failed to send message. Please try again.';
+      }
+    }
+  </script>
+</body>
+
+</html>

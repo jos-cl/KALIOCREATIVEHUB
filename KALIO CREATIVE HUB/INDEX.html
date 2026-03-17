@@ -426,7 +426,8 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact">Messages</a></li>
+      <li><a href="/admin#messages">Messages</a></li>
+      <li><a href="/admin">Admin Dashboard</a></li>
     </ul>
   </nav>
 
@@ -514,12 +515,13 @@
   <section id="contact">
     <div class="container fade-in">
       <h2>Contact Us</h2>
-      <form onsubmit="event.preventDefault();alert('Message sent!')">
-        <input placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button>Send Message</button>
+      <form id="contactForm">
+        <input name="name" placeholder="Your Name" required>
+        <input name="email" type="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
       </form>
+      <div id="contactStatus" style="margin-top:10px;color:#b37676;"></div>
 
       <iframe src="https://maps.google.com/maps?q=Lusaka&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
     </div>
@@ -573,20 +575,19 @@
       let slideInterval;
       const SLIDE_DURATION = 3000; // 3 seconds
 
-      // Fetch images from JSON file
+      // Fetch images from backend API
       async function fetchPortfolioImages() {
         try {
-          // Load the JSON file that lists all images
-          const response = await fetch('images/images.json');
+          const response = await fetch('/api/portfolio');
 
           if (!response.ok) {
-            throw new Error('Failed to load images.json');
+            throw new Error('Failed to load portfolio from API');
           }
 
           allImages = await response.json();
 
-          if (allImages.length === 0) {
-            throw new Error('No images found in images.json');
+          if (!Array.isArray(allImages) || allImages.length === 0) {
+            throw new Error('No images returned from API');
           }
 
           // Initialize the slider
@@ -596,17 +597,16 @@
           console.error('Error loading portfolio images:', error);
           portfolioLoading.innerHTML = `
         <p style="color:#b37676;">Unable to load portfolio images.</p>
-        <p>Please make sure images/images.json file exists.</p>
+        <p>Check that the backend is running and /api/portfolio is reachable.</p>
       `;
 
-          // Named images below are our static images so if JSON fails the code displays these images
+          // fallback static images
           allImages = [
             'From Darkness to Light Flyer 2.png',
             'D-Express Loans and Business Ventures Loans Flyer_20250424_203514_0000.png',
             'Kalio Creative Hub FlyerFolio.png'
           ];
 
-          // This Code initialize with fallback images/static images
           if (allImages.length > 0) {
             initializeSlider();
           }
@@ -714,17 +714,40 @@
 
       // Initialize the portfolio slider
       fetchPortfolioImages();
+
+      // contact form submission via API
+      const contactForm = document.getElementById('contactForm');
+      const contactStatus = document.getElementById('contactStatus');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const data = {
+            name: contactForm.name.value,
+            email: contactForm.email.value,
+            message: contactForm.message.value,
+            created_at: new Date().toISOString()
+          };
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+            if (res.ok) {
+              contactStatus.textContent = 'Thank you! Your message has been sent.';
+              contactForm.reset();
+            } else {
+              contactStatus.textContent = 'Failed to send message. Please try again later.';
+            }
+          } catch (err) {
+            console.error('Contact form error', err);
+            contactStatus.textContent = 'An error occurred. Please try again.';
+          }
+        });
+      }
     });
   </script>
   <section>
-      <label for="dropdown">dropdown</label>
-      <select>
-        <option value="software">Software</option>
-        <option value="hardware">Hardware</option>
-        <option value="networking">Networking</option>
-      </select>
-  </section>
- 
 </body>
 
 </html>
